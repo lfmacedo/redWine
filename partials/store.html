@@ -1,0 +1,48 @@
+<p class="text-info">
+  Confira as novidades do mundo dos Vinhos <br />
+  Selecione o produto que voc&ecirc; deseja e adicione ao seu carrinho de compras<br />
+</p>
+
+<p >
+	Pesquisar <input ng-model="search" placeholder="vinho, descri&ccedil;&atilde;o, safra" >
+</p>
+
+<table class="table table-bordered" ng-controller="MainCtrl as mainCtrl">
+
+	<tr class="well">
+	    <td class="tdRight" colspan="4" >
+	      <!-- cart-title.html -->
+	      <cart-title></cart-title>
+	    </td>
+	</tr>
+
+	<tr ng-repeat="vinho in vinhos | orderBy:'name' | filter:search">
+		<td class="tdCenter img-box"><a href="#/vinhos/{{vinho.sku}}"><img src="images/vinhos/{{vinho.image}}.jpg" ></a></td>
+		<td >
+			<h4 class="vinho-title" ng-bind="vinho.name"></h4>
+			<dl class="dl-horizontal vinho-caracteristics">
+			  <dt>Safra</dt>
+			  <dd ng-bind="vinho.safra"></dd>
+			  <dt>Tipo</dt>
+			  <dd ng-bind="vinho.tipo"></dd>
+			  <dt>Uva</dt>
+			  <dd ng-bind="vinho.uva"></dd>
+			  <dt>Nacionalidade</dt>
+			  <dd ng-bind="vinho.nacionalidade"></dd>
+			</dl>
+			
+			
+			<!--  <blockquote ng-bind="vinho.description"></blockquote>-->
+		</td>
+		<td class="tdRight" ng-bind="vinho.price | currency: 'R$'"></td>
+		<td class="tdCenter"><a href="" ng-click="mainCtrl.addCart(vinho.sku,vinho.name,vinho.price,1)">Adicionar ao carrinho</a></td>
+	</tr>
+
+	<tr class="well">
+	    <td class="tdRight" colspan="4" >
+	      <!-- cart-title.html -->
+	      <cart-title></cart-title>
+	    </td>
+	</tr>
+
+</table>

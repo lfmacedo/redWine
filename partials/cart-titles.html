@@ -1,0 +1,5 @@
+<a href="#/cart" title="ir ao carrinho de compras" >
+	<i class="glyphicon glyphicon-shopping-cart" />
+	<b>{{ItemsQtd}}</b> <span ng-show="ItemsQtd<2">item</span><span ng-show="ItemsQtd>1">itens</span>,
+	<b>{{Total | currency: "R$"}}</b>
+</a>

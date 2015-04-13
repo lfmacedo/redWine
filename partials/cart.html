@@ -1,0 +1,80 @@
+<div ng-controller="CartCtrl as cartCtrl">
+
+<p class="text-info">
+	Este &eacute; o seu carrinho de compras.<br>
+	Por favor, confira os itens e quantidades antes de confirmar seu pedido.
+</p>
+
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span8">
+			<table class="table table-bordered">
+				<thead>
+					<tr class="well">
+						<th>Item</th><th class="tdCenter">Quantidade</th><th class="tdRight">Pre&ccedil;o</th><th></th>
+					</tr>
+				</thead>
+				
+				<tr ng-repeat="item in list()" ng-hide="ItemsQtd < 1">
+					<td class="tdLeft">{{item.name}}</td>
+					<td class="tdCenter">
+						<div class="input-append">
+							 <!-- use type=tel instead of number to prevent spinners -->
+							<input class="span3 text-center" type="tel" ng-model="item.quantity" ng-disabled="true">
+							<button class="btn btn-success" ng-disabled="item.quantity >= 1000" ng-click="cartCtrl.addCart(item.sku,item.name,item.price,+1)">+</button>
+							<button class="btn btn-inverse" ng-disabled="item.quantity <= 1" ng-click="cartCtrl.addCart(item.sku,item.name,item.price,-1)">-</button>
+						</div>
+					</td>
+					<td class="tdRight" ng-bind="(item.price*item.quantity) | currency: 'R$'"></td><td class="tdCenter"><a href="" ng-click="cartCtrl.addCart(item.sku,item.name,item.price,-1000)"><i class="icon-remove"></i></a></td>
+				</tr>
+				<!-- empty cart message -->
+			    <tr ng-hide="ItemsQtd > 0" >
+			      <td class="tdCenter" colspan="4">Seu carrinho est&aacute; vazio. </td>
+			    </tr>
+				<tr class="well">
+					<td class="tdLeft"><strong>Total</strong></td><td class="tdCenter"><strong>{{ItemsQtd}}</strong></td><td class="tdRight"><strong>{{Total | currency: "R$"}}</strong></td><td></td>
+				</tr>
+			</table>
+		</div>
+						
+		<!-- buttons -->
+		<div class="span4">
+			<p class="text-info">
+				<button 
+			      class="btn btn-block" 
+			      onclick="window.location.href='#/'">
+			      <i class="icon-chevron-left" /> retornar a loja
+			    </button>
+			    <button 
+			      class="btn btn-block btn-danger" 
+			      ng-click="cartCtrl.clearItems()" 
+			      ng-disabled="ItemsQtd < 1" >
+			      <i class="icon-trash icon-white" /> limpar o carrinho
+			    </button>
+		    </p>
+		    <p class="text-info">
+			    <button 
+			      class="btn btn-block btn-primary" 
+			      ng-click="cartCtrl.checkOut()"
+			      ng-disabled="ItemsQtd < 1">
+			      <i class="icon-ok icon-white" /> Finalizar a compra
+			    </button>
+		    </p>
+		</div> 
+		<!-- /buttons -->
+
+	</div>
+	
+	<div>{{MyLocalStorage}}</div>
+	
+	
+	<!-- Cart Finish Object -->
+	<div class="row-fluid">
+		<div class="span12 box-cart-finish" style="display: none;">
+			<h3>Carrinho Object</h3>
+			<div id="cartObject" style="background-color: #2E2E2E;color: #00FF80;border-color: #cccccc;padding: 10px;"></div>
+		</div>
+	</div>	
+	
+</div>

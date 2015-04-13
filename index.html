@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="store">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>by LFTM</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css"/>
+<link type="text/css" href="css/store.css" rel="stylesheet">
+
+<style type="text/css">
+.bs-example{
+	margin: 20px;
+}
+.toggle-modal {
+	width: 200px;
+	position: absolute;
+	margin: 0 auto;
+	z-index: 9999;
+	bottom: 20px;
+	right: 0;
+	left: 0;
+}
+</style>
+
+</head>
+<body>
+
+<!-- 
+        bootstrap fluid layout
+        (12 columns: span 10, offset 1 centers the content and adds a margin on each side)
+    -->
+    
+<div class="container-fluid">
+	<div class="row-fluid">
+            <div class="span10 offset1">
+                <div ng-include="'partials/header.html'"></div> 
+       
+            	<div style="margin-bottom: 50px;" ng-view></div>
+           
+           
+            	<footer class="footer">
+				    <div class="container">
+				      <p class="text-muted">RedWine AngularJS demo Store, by LFTM.</p>
+				    </div>
+				</footer>
+            </div>
+    </div><!-- row-fluid -->
+</div><!-- container-fluid -->
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-route.js"></script>
+<script src="js/store.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.toggle-modal').click(function(){
+		$('#myModal').modal('toggle');
+	}); 
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<div ng-controller="ProductCtrl as productCtrl">
+
+	<p class="text-info">
+			<img src="images/vinhos/{{item.image}}-large.jpg">
+			<span class="text-primary product-title vinho-title" ng-bind="item.name"></span>
+			<span class="text-muted product-description" >&nbsp;- &ldquo;{{item.description}}&rdquo;</span>
+	</p>
+
+	<div class="container-fluid">
+	    <div class="row-fluid">
+	        <div class="span8">
+	        
+	        	<!-- product info -->
+				<table class="table table-bordered" >
+					
+					<tr class="well">
+					    <td class="tdRight" colspan="2" >
+					      <!-- cart-title.html -->
+					      <cart-title></cart-title>
+					    </td>
+					</tr>
+			 
+					<tr>
+						<td class="tdRight">Safra</td><td ng-bind="item.safra"></td>
+					</tr>
+					<tr>
+						<td class="tdRight">Tipo</td><td ng-bind="item.tipo"></td>
+					</tr>
+					<tr>
+						<td class="tdRight">Uva</td><td ng-bind="item.uva"></td>
+					</tr>
+					<tr>
+						<td class="tdRight">Nacionalidade</td><td ng-bind="item.nacionalidade"></td>
+					</tr>
+					<tr>
+						<td class="tdRight">Pre&ccedil;o</td><td class="text-right" ng-bind="item.price | currency: 'R$'"></td>
+					</tr>
+				
+					<tr class="well">
+					    <td class="tdRight" colspan="2" >
+					      <!-- cart-title.html -->
+					      <cart-title></cart-title>
+					    </td>
+					</tr>
+					
+				</table>
+				
+			</div>
+	
+			<!-- buttons -->
+			<div class="span4" >
+				<button 
+			      class="btn btn-block btn-success" 
+			      ng-click="productCtrl.addCart(item.sku,item.name,item.price,+1)">
+			      <i class="icon-shopping-cart icon-white" /> adicionar ao carrinho
+			    </button>
+			    <button 
+			      class="btn btn-block" 
+			      onclick="window.location.href='#/'">
+			      <i class="icon-chevron-left" /> retornar a loja
+			    </button>
+			    <button 
+			      class="btn btn-block btn-danger" 
+			      ng-click="productCtrl.clearItems()" 
+			      ng-disabled="ItemsQtd < 1" >
+			      <i class="icon-trash icon-white" /> limpar o carrinho
+			    </button>
+			</div> 
+			<!-- /buttons -->
+			
+		</div>
+	</div>
+	
+</div><!-- div ng-controller -->
+
